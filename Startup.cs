@@ -30,8 +30,9 @@ namespace AmsterdamSportInc
             services.AddDbContext<AmsterdamSportIncContext>(opt => opt.UseSqlServer
             (Configuration.GetConnectionString("AmsterdamSportIncConnection")));
             services.AddControllers();
-            // services.AddScoped<ISportRepository>();
-            // services.AddScoped<IMemberRepository>();
+            services.AddScoped<ISportRepository, SportRepository>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<IMemberToSportRepository, MemberToSportRepository>();
             
             //I will let this here in case needed
             // services.AddSwaggerGen(c =>

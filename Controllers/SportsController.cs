@@ -9,16 +9,18 @@ namespace AmsterdamSportInc.Controllers
     [ApiController]
     public class SportsController : ControllerBase
     {
+
         private readonly ISportRepository _repository;
 
         public SportsController(ISportRepository repository)
-        {
+{
             _repository = repository;
         }
         //GET api/sports
         [HttpGet]
         public ActionResult<IEnumerable<Sport>> GetAllSports()
         {
+            var sports = _repository.GetAllSports();
             return Ok("test");
         }
 
