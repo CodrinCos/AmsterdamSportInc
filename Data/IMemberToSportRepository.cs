@@ -8,6 +8,9 @@ namespace AmsterdamSportInc.Data
         bool SaveChanges();
         void AssignMemberToSport(MemberToSport memberToSport);
         void DeleteMemberToSport(MemberToSport memberToSport);
-        public bool CheckForDuplicaion(int id, string name);
+        bool CheckForDuplicaion(int id, string name);
+        IEnumerable<MemberToSport> GetSportsForAMember(int id);
+        bool CheckIfSportExists(string sportName);
+        bool CheckIfPersonExists(int id);
     }
 }

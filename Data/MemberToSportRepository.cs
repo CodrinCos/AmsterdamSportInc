@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AmsterdamSportInc.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AmsterdamSportInc.Data
 {
@@ -28,10 +29,36 @@ namespace AmsterdamSportInc.Data
             if (check == null)
             {
                 return false;
-            } else
+            }
+            else
             {
                 return true;
             }
+        }
+
+        public bool CheckIfSportExists(string sportName)
+        {
+            var check = _context.Sports.FirstOrDefault(p => p.Name == sportName);
+            if (check != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckIfPersonExists(int id)
+        {
+            var check = _context.Members.FirstOrDefault(p => p.Id == id);
+            if(check != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public IEnumerable<MemberToSport> GetSportsForAMember(int id)
+        {
+            return _context.MemberToSport.Where(p => p.MemberId == id).ToList();
         }
 
         public void DeleteMemberToSport(MemberToSport memberToSport)

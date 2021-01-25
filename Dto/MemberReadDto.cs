@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AmsterdamSportInc.Dto;
 
 namespace AmsterdamSportInc.Models
 {
@@ -7,6 +8,6 @@ namespace AmsterdamSportInc.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
-        public ICollection<Sport> Sports { get; set; }
+        public ICollection<SportReadDto> Sports { get; set; }
     }
 }

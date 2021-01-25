@@ -12,19 +12,38 @@ namespace AmsterdamSportInc.Controllers
     public class MembersController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IMemberRepository _repository;
+        private readonly IMemberRepository _memberRepository;
+        private readonly IMemberToSportRepository _memberToSportRepository;
 
-        public MembersController(IMemberRepository repository, IMapper mapper)
+        public MembersController(IMemberRepository memberRepository, IMemberToSportRepository memberToSportRepository, IMapper mapper)
         {
             _mapper = mapper;
-            _repository = repository;
+            _memberRepository = memberRepository;
+            _memberToSportRepository = memberToSportRepository;
         }
         //GET api/members
         [HttpGet]
         public ActionResult<IEnumerable<Member>> GetAllMembers()
         {
-            var members = _repository.GetAllMembers();
-            return Ok(members);
+            var members = _memberRepository.GetAllMembers();
+            var membersReadDto = _mapper.Map<IEnumerable<MemberReadDto>>(members);
+            foreach (var member in membersReadDto)
+            {
+                var sports = _memberToSportRepository.GetSportsForAMember(member.Id);
+                if (sports != null)
+                {
+                    List<SportReadDto> sportsToRead = new List<SportReadDto>();
+                    foreach (var item in sports)
+                    {
+                        SportReadDto aux = new SportReadDto();
+                        aux.Name = item.SportName;
+                        sportsToRead.Add(aux);
+                    }
+                    member.Sports = sportsToRead;
+                }
+
+            }
+            return Ok(membersReadDto);
         }
 
 
@@ -32,10 +51,23 @@ namespace AmsterdamSportInc.Controllers
         [HttpGet("{id}", Name = "GetMemberById")]
         public ActionResult<MemberReadDto> GetMemberById(int id)
         {
-            var member = _repository.GetMemberById(id);
+            var member = _memberRepository.GetMemberById(id);
             if (member != null)
             {
-                return Ok(_mapper.Map<MemberReadDto>(member));
+                var sports = _memberToSportRepository.GetSportsForAMember(id);
+                var memberReadDto = _mapper.Map<MemberReadDto>(member);
+                if (sports != null)
+                {
+                    List<SportReadDto> sportsToRead = new List<SportReadDto>();
+                    foreach (var item in sports)
+                    {
+                        SportReadDto aux = new SportReadDto();
+                        aux.Name = item.SportName;
+                        sportsToRead.Add(aux);
+                        memberReadDto.Sports = sportsToRead;
+                    }
+                }
+                return Ok(memberReadDto);
             }
             return NotFound("The id that you are trying to find is incorrect!");
         }
@@ -45,8 +77,8 @@ namespace AmsterdamSportInc.Controllers
         public ActionResult<MemberReadDto> CreateMember(MemberCreateDto memberCreateDto)
         {
             var memberModel = _mapper.Map<Member>(memberCreateDto);
-            _repository.CreateMember(memberModel);
-            _repository.SaveChanges();
+            _memberRepository.CreateMember(memberModel);
+            _memberRepository.SaveChanges();
 
             var memberReadDto = _mapper.Map<MemberReadDto>(memberModel);
 
