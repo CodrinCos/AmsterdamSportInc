@@ -83,7 +83,6 @@ namespace AmsterdamSportInc.Controllers
             var memberReadDto = _mapper.Map<MemberReadDto>(memberModel);
 
             return CreatedAtRoute(nameof(GetMemberById), new { Id = memberReadDto.Id }, memberReadDto);
-
         }
 
     }

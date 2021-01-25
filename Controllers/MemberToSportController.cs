@@ -18,7 +18,7 @@ namespace AmsterdamSportInc.Controllers
             _mapper = mapper;
             _repository = repository;
         }
-        //POST apo/memberstosport
+        //POST api/memberstosport
         [HttpPost]
         public ActionResult<MemberToSportReadDto> AssignMemberToSport(MemberToSportCreateDto memberToSportDto)
         {
