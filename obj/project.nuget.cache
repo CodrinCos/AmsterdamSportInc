@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8YxeJY6gJAqiMkzbjgZvuVT0u2d0nMkY70Zd78cZDiHPE/3WA9D1AzaB2reAHkfTaKeZlRpDch6rNYtAfZm+6A==",
+  "dgSpecHash": "qp28u+zCgGcFyAd5wgERSU4aKDcFMpwWbh/J98foP0cGFj9kxtcjOEhyiIpbA5RdWXrxXkSfZvaQTCQAzN0ZKw==",
   "success": true,
-  "projectFilePath": "D:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
+  "projectFilePath": "d:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\codri\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\codri\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.0\\microsoft.aspnetcore.authentication.jwtbearer.5.0.0.nupkg.sha512",
