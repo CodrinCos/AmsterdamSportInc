@@ -10,7 +10,5 @@ namespace AmsterdamSportInc.Data
         void CreateMember(Member member);
         void UpdateMember(Member member);
         void DeleteMember(Member member);
-        void AssignMemberToSport(MemberToSport memberToSport);
-        void DeleteMemberToSport(MemberToSport memberToSport);
     }
 }
