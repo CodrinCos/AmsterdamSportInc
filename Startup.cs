@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AmsterdamSportInc.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,9 @@ namespace AmsterdamSportInc
         {
 
             services.AddControllers();
+            // services.AddScoped<ISportRepository>();
+            // services.AddScoped<IMemberRepository>();
+            
             //I will let this here in case needed
             // services.AddSwaggerGen(c =>
             // {
@@ -38,7 +42,6 @@ namespace AmsterdamSportInc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
                 //Same here, in case we need swagger
                 // app.UseSwagger();
                 // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AmsterdamSportInc v1"));
