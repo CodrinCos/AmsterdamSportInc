@@ -19,14 +19,15 @@ namespace AmsterdamSportInc.Controllers
         public ActionResult<IEnumerable<Sport>> GetAllSports()
         {
             var sports = _repository.GetAllSports();
-            return Ok("test");
+            return Ok(sports);
         }
 
         //GET api/sports/{name}
         [HttpGet("{name}", Name = "GetSportByName")]
-        public ActionResult<Sport> GetSportByName(string name)
+        public ActionResult<Sport> GetSportByName(string sportName)
         {
-            return Ok("test");
+            var sport = _repository.GetSportByName(sportName);
+            return Ok(sport);
         }
     }
 }
