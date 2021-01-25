@@ -2,11 +2,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmsterdamSportInc.Dto
 {
-    public class MemberCreateDto
+    public class MemberToSportReadDto
     {
         [Required]
-        public string FirstName { get; set; }
+        public int MemberId { get; set; }
         [Required]
-        public string Surname { get; set; }
+        public string SportName { get; set; }
     }
 }
