@@ -29,14 +29,14 @@ namespace AmsterdamSportInc.Controllers
 
         //GET api/sports/{name}
         [HttpGet("{name}", Name = "GetSportByName")]
-        public ActionResult<SportReadDto> GetSportByName(string sportName)
+        public ActionResult<SportReadDto> GetSportByName(string name)
         {
-            var sport = _repository.GetSportByName(sportName);
+            var sport = _repository.GetSportByName(name);
             if (sport != null)
             {
                 return Ok(_mapper.Map<SportReadDto>(sport));
             }
-            return NotFound();
+            return NotFound("The sport you are trying to find does not exists! Check the sport list in the right endpoint!");
         }
 
         //POST api/sports

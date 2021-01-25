@@ -23,7 +23,7 @@ namespace AmsterdamSportInc.Controllers
         }
         //GET api/members
         [HttpGet]
-        public ActionResult<IEnumerable<Member>> GetAllMembers()
+        public ActionResult<IEnumerable<MemberReadDto>> GetAllMembers()
         {
             var members = _memberRepository.GetAllMembers();
             var membersReadDto = _mapper.Map<IEnumerable<MemberReadDto>>(members);
