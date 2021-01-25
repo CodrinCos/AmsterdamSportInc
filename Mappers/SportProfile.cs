@@ -9,6 +9,7 @@ namespace AmsterdamSportInc.Mappers
         public SportMapper()
         {
             CreateMap<Sport, SportReadDto>();
+            CreateMap<SportCreateDto, Sport>();
         }
     }
 }

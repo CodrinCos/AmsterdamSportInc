@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmsterdamSportInc.Dto
 {
-    public class SportReadDto
+    public class SportCreateDto
     {
         [Required]
         public string Name { get; set; }

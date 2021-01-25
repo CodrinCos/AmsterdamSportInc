@@ -15,7 +15,7 @@ namespace AmsterdamSportInc.Controllers
         private readonly IMapper _mapper;
 
         public SportsController(ISportRepository repository, IMapper mapper)
-{
+        {
             _repository = repository;
             _mapper = mapper;
         }
@@ -37,6 +37,26 @@ namespace AmsterdamSportInc.Controllers
                 return Ok(_mapper.Map<SportReadDto>(sport));
             }
             return NotFound();
+        }
+
+        //POST api/sports
+        [HttpPost]
+        public ActionResult<SportReadDto> CreateSport(SportCreateDto sportCreateDto)
+        {
+            var sportModel = _mapper.Map<Sport>(sportCreateDto);
+            if (_repository.GetSportByName(sportModel.Name) == null)
+            {
+                _repository.CreateSport(sportModel);
+                _repository.SaveChanges();
+
+                var sportReadDto = _mapper.Map<SportReadDto>(sportModel);
+               
+                return CreatedAtRoute(nameof(GetSportByName), new {Name = sportReadDto.Name}, sportReadDto);
+            } else 
+            {
+                return BadRequest("The Sport you are trying to create already exists! Check the sports list by calling the right endpoint!");
+            }
+
         }
     }
 }

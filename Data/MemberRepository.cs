@@ -11,7 +11,7 @@ namespace AmsterdamSportInc.Data
 
         public MemberRepository(AmsterdamSportIncContext context)
         {
-            _context = context;   
+            _context = context;
         }
         public void CreateMember(Member member)
         {
@@ -19,12 +19,16 @@ namespace AmsterdamSportInc.Data
             {
                 throw new ArgumentNullException(nameof(member));
             }
-            _context.Add(member);
+            _context.Members.Add(member);
         }
 
         public void DeleteMember(Member member)
         {
-            throw new System.NotImplementedException();
+            if (member == null)
+            {
+                throw new ArgumentNullException(nameof(member));
+            }
+            _context.Members.Remove(member);
         }
 
         public IEnumerable<Member> GetAllMembers()
@@ -39,12 +43,12 @@ namespace AmsterdamSportInc.Data
 
         public bool SaveChanges()
         {
-           return (_context.SaveChanges() > 0);
+            return (_context.SaveChanges() > 0);
         }
 
         public void UpdateMember(Member member)
         {
-            throw new System.NotImplementedException();
+
         }
     }
 }

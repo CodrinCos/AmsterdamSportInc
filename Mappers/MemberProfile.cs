@@ -9,6 +9,7 @@ namespace AmsterdamSportInc.Mappers
         public MemberMapper()
         {
             CreateMap<Member, MemberReadDto>();
+            CreateMap<MemberReadDto, Member>();
         }
     }
 }

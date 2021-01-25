@@ -24,7 +24,11 @@ namespace AmsterdamSportInc.Data
 
         public void DeleteSport(Sport sport)
         {
-            throw new System.NotImplementedException();
+            if (sport == null)
+            {
+                throw new ArgumentNullException(nameof(sport));
+            }
+            _context.Sports.Remove(sport);
         }
 
         public IEnumerable<Sport> GetAllSports()
@@ -45,7 +49,7 @@ namespace AmsterdamSportInc.Data
 
         public void UpdateSport(Sport sport)
         {
-            throw new System.NotImplementedException();
+
         }
     }
 }
