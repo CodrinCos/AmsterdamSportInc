@@ -9,9 +9,7 @@ namespace AmsterdamSportInc.Controllers
     [ApiController]
     public class SportsController : ControllerBase
     {
-
         private readonly ISportRepository _repository;
-
         public SportsController(ISportRepository repository)
 {
             _repository = repository;
