@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AmsterdamSportInc.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,7 +34,8 @@ namespace AmsterdamSportInc
             services.AddScoped<ISportRepository, SportRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IMemberToSportRepository, MemberToSportRepository>();
-            
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+           
             //I will let this here in case needed
             // services.AddSwaggerGen(c =>
             // {
