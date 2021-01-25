@@ -20,5 +20,11 @@ namespace AmsterdamSportInc.Data
         {
             throw new System.NotImplementedException();
         }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() > 0);
+
+        }
     }
 }

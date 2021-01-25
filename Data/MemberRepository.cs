@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AmsterdamSportInc.Models;
@@ -14,7 +15,11 @@ namespace AmsterdamSportInc.Data
         }
         public void CreateMember(Member member)
         {
-            throw new System.NotImplementedException();
+            if (member == null)
+            {
+                throw new ArgumentNullException(nameof(member));
+            }
+            _context.Add(member);
         }
 
         public void DeleteMember(Member member)
@@ -30,6 +35,11 @@ namespace AmsterdamSportInc.Data
         public Member GetMemberById(int id)
         {
             return _context.Members.FirstOrDefault(p => p.Id == id);
+        }
+
+        public bool SaveChanges()
+        {
+           return (_context.SaveChanges() > 0);
         }
 
         public void UpdateMember(Member member)

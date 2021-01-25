@@ -5,6 +5,7 @@ namespace AmsterdamSportInc.Data
 {
     public interface IMemberRepository
     {
+        bool SaveChanges();
         IEnumerable<Member> GetAllMembers();
         Member GetMemberById(int Id);
         void CreateMember(Member member);

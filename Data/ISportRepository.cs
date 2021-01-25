@@ -5,6 +5,7 @@ namespace AmsterdamSportInc.Data
 {
     public interface ISportRepository
     {
+        bool SaveChanges();
         IEnumerable<Sport> GetAllSports();
         Sport GetSportByName(string sportName);
         void CreateSport(Sport sport);
