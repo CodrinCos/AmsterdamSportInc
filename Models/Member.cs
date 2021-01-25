@@ -1,9 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace AmsterdamSportInc.Models
 {
     public class Member
     {
-        public int Id { get; set; }     
-        public string FirstName { get; set; }   
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
         public string Surname { get; set; }
     }
 }
