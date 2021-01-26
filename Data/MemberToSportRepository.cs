@@ -61,9 +61,16 @@ namespace AmsterdamSportInc.Data
             return _context.MemberToSport.Where(p => p.MemberId == id).ToList();
         }
 
-        public void DeleteMemberToSport(MemberToSport memberToSport)
+        public void DeleteMemberToSport(int id, string name)
         {
-            throw new System.NotImplementedException();
+            var sportsToMember = GetSportsForAMember(id);
+            foreach (var sportToMember in sportsToMember)
+            {
+                if (sportToMember.SportName == name)
+                {
+                    _context.MemberToSport.Remove(sportToMember);
+                }
+            }
         }
 
         public bool SaveChanges()

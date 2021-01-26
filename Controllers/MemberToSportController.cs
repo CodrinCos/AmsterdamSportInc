@@ -47,5 +47,14 @@ namespace AmsterdamSportInc.Controllers
             }
             return BadRequest("This person is already assigned to this sport!");
         }
+
+        //DELETE api/memberstosport/{id}/{name}
+        [HttpDelete("{id}/{name}")]
+        public ActionResult DeleteMemberToSport(int id, string name)
+        {
+            _repository.DeleteMemberToSport(id, name);
+            _repository.SaveChanges();
+            return NoContent();
+        }
     }
 }
