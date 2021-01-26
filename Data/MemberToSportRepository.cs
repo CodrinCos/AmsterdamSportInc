@@ -89,5 +89,18 @@ namespace AmsterdamSportInc.Data
                 var row = _context.MemberToSport.Remove(item);
             }
         }
+
+        public int SportNumberLeft(int memberId)
+        {
+            var sports = GetSportsForAMember(memberId);
+            int nmbOfSports = _context.Sports.Count();
+            int counter = 0;
+            foreach (var sport in sports)
+            {
+                counter++;
+                if (sport.SportName == "Football" && counter >= 2) return 0;
+            }
+            return (nmbOfSports-counter);
+        }
     }
 }

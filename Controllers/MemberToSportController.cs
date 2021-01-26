@@ -37,11 +37,15 @@ namespace AmsterdamSportInc.Controllers
                 {
                     return BadRequest("When you assign football you cannot have more than 1 sport already assigned! Please remove a sport for this person!");
                 }
+                if (_repository.SportNumberLeft(memberToSportModel.MemberId) == 0)
+                {
+                    return BadRequest("The maximum sport number exceeds");
+                }
                 _repository.AssignMemberToSport(memberToSportModel);
                 _repository.SaveChanges();
                 return Ok(memberToSportModel.SportName + " was assigned succefully!");
             }
-            return BadRequest("This person is already assigned!");
+            return BadRequest("This person is already assigned to this sport!");
         }
     }
 }
