@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "omywPQN5FfNktYH97Pnk8CZkcBXNb8CcctMTBuq2MMeO9T3JzVN2R6gg7rBlyRpwR50Fce+KJ7pkaC5nR1FIZA==",
+  "dgSpecHash": "tRS1fNI626wpUZOw7RDSDyrZRYz+AkokOvvdB5IZ9lHaVoAwwMvwYrLVdEuiZtlIFv7OoMfxfqoKY1y4yrKFdA==",
   "success": true,
-  "projectFilePath": "D:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
+  "projectFilePath": "d:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\codri\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\codri\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

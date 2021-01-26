@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj": {}
+    "d:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj": {}
   },
   "projects": {
-    "D:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj": {
+    "d:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
+        "projectUniqueName": "d:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
         "projectName": "AmsterdamSportInc",
-        "projectPath": "D:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
+        "projectPath": "d:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\AmsterdamSportInc.csproj",
         "packagesPath": "C:\\Users\\codri\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\obj\\",
+        "outputPath": "d:\\Work\\AmsterdamSportIncv2.0\\AmsterdamSportInc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\codri\\AppData\\Roaming\\NuGet\\NuGet.Config",
