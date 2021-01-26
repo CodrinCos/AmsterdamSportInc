@@ -12,5 +12,6 @@ namespace AmsterdamSportInc.Data
         IEnumerable<MemberToSport> GetSportsForAMember(int id);
         bool CheckIfSportExists(string sportName);
         bool CheckIfPersonExists(int id);
+        bool CheckIfFootballAllowed(int memberId);
     }
 }

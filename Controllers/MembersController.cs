@@ -85,5 +85,24 @@ namespace AmsterdamSportInc.Controllers
             return CreatedAtRoute(nameof(GetMemberById), new { Id = memberReadDto.Id }, memberReadDto);
         }
 
+        //PUT api/members/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateMember(int id, MemberUpdateDto memberUpdateDto)
+        {
+            var existingMember = _memberRepository.GetMemberById(id);
+            if (existingMember == null)
+            {
+                return NotFound("This member id is incorrect!");
+            }
+
+            _mapper.Map(memberUpdateDto, existingMember);
+            _memberRepository.UpdateMember(existingMember);
+
+            _memberRepository.SaveChanges();
+
+            return NoContent();
+        }
+
+        
     }
 }

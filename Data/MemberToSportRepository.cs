@@ -71,5 +71,16 @@ namespace AmsterdamSportInc.Data
             return (_context.SaveChanges() > 0);
 
         }
+
+        public bool CheckIfFootballAllowed(int memberId)
+        {
+            var sports = GetSportsForAMember(memberId);
+            if (sports.Count() < 2) 
+            {
+                return true;
+            }
+            return false;
+
+        }
     }
 }

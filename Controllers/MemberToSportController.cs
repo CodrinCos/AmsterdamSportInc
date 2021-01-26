@@ -33,6 +33,10 @@ namespace AmsterdamSportInc.Controllers
                 {
                     return BadRequest("The member you are trying to assign is not available!");
                 }
+                if (memberToSportDto.SportName == "Football" && !_repository.CheckIfFootballAllowed(memberToSportDto.MemberId))
+                {
+                    return BadRequest("When you assign football you cannot have more than 1 sport already assigned! Please remove a sport for this person!");
+                }
                 _repository.AssignMemberToSport(memberToSportModel);
                 _repository.SaveChanges();
                 return Ok(memberToSportModel.SportName + " was assigned succefully!");
