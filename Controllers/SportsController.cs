@@ -57,24 +57,19 @@ namespace AmsterdamSportInc.Controllers
                 return BadRequest("The Sport you are trying to create already exists! Check the sports list by calling the right endpoint!");
             }
         }
-        
-        //This has problems... but somehow is useless
-        //PUT api/sports/{name}
-        // [HttpPut("{name}")]
-        // public ActionResult UpdateSport(string name, SportUpdateDto sportUpdateDto)
-        // {
-        //     var existingSport = _repository.GetSportByName(name);
-        //     if(existingSport == null)
-        //     {
-        //         return NotFound("This sport does not exists !");
-        //     }
 
-        //     _mapper.Map(sportUpdateDto, existingSport);
-        //     _repository.UpdateSport(existingSport);
-
-        //     _repository.SaveChanges();
-
-        //     return NoContent();
-        // }
+        //DELETE api/sports/{name}
+        [HttpDelete("{name}")]
+        public ActionResult DeleteSport(string name)
+        {
+            var existingSport = _repository.GetSportByName(name);
+            if (existingSport == null)
+            {
+                return NotFound("This sport is invalid!");
+            }
+            _repository.DeleteSport(existingSport);
+            _repository.SaveChanges();
+            return NoContent();
+        }
     }
 }

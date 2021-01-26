@@ -103,6 +103,20 @@ namespace AmsterdamSportInc.Controllers
             return NoContent();
         }
 
-        
+        //DELETE api/members/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteMember(int id)
+        {
+            var existingMember = _memberRepository.GetMemberById(id);
+            if (existingMember == null)
+            {
+                return NotFound("This member id is incorrect!");
+            }
+            _memberRepository.DeleteMember(existingMember);
+            var toDeleteMemberToSport = _memberToSportRepository.GetSportsForAMember(id);
+            _memberToSportRepository.UnAssignAllSportsFromAMember(toDeleteMemberToSport);
+            _memberRepository.SaveChanges();
+            return NoContent();
+        }
     }
 }

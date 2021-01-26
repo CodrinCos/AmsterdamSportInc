@@ -13,5 +13,6 @@ namespace AmsterdamSportInc.Data
         bool CheckIfSportExists(string sportName);
         bool CheckIfPersonExists(int id);
         bool CheckIfFootballAllowed(int memberId);
+        void UnAssignAllSportsFromAMember(IEnumerable<MemberToSport> memberId);
     }
 }

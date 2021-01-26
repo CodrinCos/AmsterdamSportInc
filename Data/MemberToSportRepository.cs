@@ -49,7 +49,7 @@ namespace AmsterdamSportInc.Data
         public bool CheckIfPersonExists(int id)
         {
             var check = _context.Members.FirstOrDefault(p => p.Id == id);
-            if(check != null)
+            if (check != null)
             {
                 return true;
             }
@@ -75,12 +75,19 @@ namespace AmsterdamSportInc.Data
         public bool CheckIfFootballAllowed(int memberId)
         {
             var sports = GetSportsForAMember(memberId);
-            if (sports.Count() < 2) 
+            if (sports.Count() < 2)
             {
                 return true;
             }
             return false;
+        }
 
+        public void UnAssignAllSportsFromAMember(IEnumerable<MemberToSport> membersToDelete)
+        {
+            foreach (var item in membersToDelete)
+            {
+                var row = _context.MemberToSport.Remove(item);
+            }
         }
     }
 }
