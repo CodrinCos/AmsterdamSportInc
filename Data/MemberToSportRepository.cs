@@ -102,11 +102,14 @@ namespace AmsterdamSportInc.Data
             var sports = GetSportsForAMember(memberId);
             int nmbOfSports = _context.Sports.Count();
             int counter = 0;
+            bool existsFootball = false;
             foreach (var sport in sports)
             {
                 counter++;
-                if (sport.SportName == "Football" && counter >= 2) return 0;
+                if (sport.SportName == "Football") existsFootball =true;
             }
+            if (existsFootball && counter <2) return 1;
+            if (existsFootball && counter >= 2) return 0;
             return (nmbOfSports-counter);
         }
     }
