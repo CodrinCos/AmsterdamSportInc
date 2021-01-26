@@ -25,11 +25,11 @@ namespace AmsterdamSportInc.Controllers
             var memberToSportModel = _mapper.Map<MemberToSport>(memberToSportDto);
             if (!_repository.CheckForDuplicaion(memberToSportModel.MemberId, memberToSportModel.SportName))
             {
-                if(!_repository.CheckIfSportExists(memberToSportModel.SportName))
+                if (!_repository.CheckIfSportExists(memberToSportModel.SportName))
                 {
                     return BadRequest("The sport you are trying to assign is not available!");
                 }
-                if(!_repository.CheckIfPersonExists(memberToSportModel.MemberId))
+                if (!_repository.CheckIfPersonExists(memberToSportModel.MemberId))
                 {
                     return BadRequest("The member you are trying to assign is not available!");
                 }
@@ -52,9 +52,13 @@ namespace AmsterdamSportInc.Controllers
         [HttpDelete("{id}/{name}")]
         public ActionResult DeleteMemberToSport(int id, string name)
         {
-            _repository.DeleteMemberToSport(id, name);
-            _repository.SaveChanges();
-            return NoContent();
+            if (_repository.CheckIfPersonExists(id) && _repository.CheckIfSportExists(name))
+            {
+                _repository.DeleteMemberToSport(id, name);
+                _repository.SaveChanges();
+                return NoContent();
+            }
+            return BadRequest("Sport or memberid not found!");
         }
     }
 }
